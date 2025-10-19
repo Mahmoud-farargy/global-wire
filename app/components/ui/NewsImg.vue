@@ -1,0 +1,24 @@
+<template>
+  <NuxtImg
+    v-bind="props"
+    :src="currentSrc"
+    loading="lazy"
+    :fallback="defaultImg"
+    :draggable="false"
+    @error="handleError"
+  />
+</template>
+
+<script lang="ts" setup>
+    const defaultImg = "/images/default-article1.jpg";
+    interface NewsImgProps  {
+        src: string
+        [key: string]: any
+    }
+    const props = defineProps<NewsImgProps>();
+    const currentSrc = ref(props.src)
+
+    const handleError = () => {
+        currentSrc.value = defaultImg
+    }
+</script>

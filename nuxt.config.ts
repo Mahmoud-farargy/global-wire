@@ -1,0 +1,31 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  postcss: {
+    plugins: {
+      '@tailwindcss/postcss': {},
+      'autoprefixer': {},
+    },
+  },
+  modules: [
+    '@nuxt/ui',
+    '@nuxt/test-utils',
+    '@nuxt/eslint',
+    '@nuxt/image',
+  ],
+  css: [
+    '~/assets/main.css',
+    '~/assets/fonts/fonts.css'
+  ],
+  // image: {
+  //   provider: 'ipx',
+  //   ipx: { },
+  // },
+  runtimeConfig: {
+    public: {
+      baseNewsApiUrl: import.meta.env.VITE_BASE_NEWSAPI_URL,
+      newsApiKey: import.meta.env.VITE_NEWS_API_KEY,
+    }
+  },
+})
