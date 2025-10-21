@@ -23,9 +23,9 @@ export default defineNuxtConfig({
   //   ipx: { },
   // },
   runtimeConfig: {
+    newsApiKey: import.meta.env.VITE_NEWS_API_KEY,
     public: {
       baseNewsApiUrl: import.meta.env.VITE_BASE_NEWSAPI_URL,
-      newsApiKey: import.meta.env.VITE_NEWS_API_KEY,
     }
   },
 })

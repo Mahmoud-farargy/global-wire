@@ -71,5 +71,5 @@ export default defineAppConfig({
     search: "/search",
     categories:"/categories"
   },
-  portfolioLink: "https://mahmoudfarargy.vercel.app/"
+  portfolioLink: "https://mahmoudfarargy.vercel.app"
 })

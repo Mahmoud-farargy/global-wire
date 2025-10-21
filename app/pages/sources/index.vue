@@ -14,6 +14,6 @@
 </template>
 
 <script setup>
-const { data, status, error } = await useFetcher("/top-headlines/sources?country=us");
+const { data, status, error } = await useFetcher("/api/news/top-headlines/sources?country=us");
 const sourcesData = computed(() => data.value?.sources || []);
 </script>

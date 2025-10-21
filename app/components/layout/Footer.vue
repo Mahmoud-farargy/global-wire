@@ -10,7 +10,7 @@
     </div>
 
     <!-- Sub Footer -->
-    <div class="bg-palette-dark-1 p-1.5" />
+    <!-- <div class="bg-palette-dark-1 p-1.5" /> -->
   </footer>
 </template>
 

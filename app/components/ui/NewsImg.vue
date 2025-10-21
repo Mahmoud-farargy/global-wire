@@ -16,9 +16,13 @@
         [key: string]: any
     }
     const props = defineProps<NewsImgProps>();
-    const currentSrc = ref(props.src)
+    const currentSrc = ref<string>(props.src || '')
 
     const handleError = () => {
-        currentSrc.value = defaultImg
+      currentSrc.value = defaultImg
     }
+
+    watch(() => props.src, (newValue: string) => {
+      currentSrc.value = newValue;
+    })
 </script>

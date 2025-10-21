@@ -12,7 +12,7 @@
         <UiNewsImg
           :src="item.urlToImage"
           :alt="item.description"
-          class="block h-auto rounded-[0.25rem] max-w-full w-full object-contain bg-gray-200 aspect-video"
+          class="block h-auto rounded-[0.25rem] max-w-full w-full object-cover bg-gray-200 aspect-video"
         />
         <!-- kicker -->
         <div

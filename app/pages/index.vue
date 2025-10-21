@@ -3,8 +3,8 @@
   <UiPagePortal title="Home">
     <div v-if="status === 'success'" class="pt-5 md:pt-6">
       <div v-if="!areAllListsEmpty">
-        <!-- Top Highlights -->
-        <SectionsHomeTopHighlights :items="topNewsList" />
+        <!-- Top Headlines -->
+        <SectionsHomeTopHeadlines :items="topNewsList" />
         <!-- Category News - Slider -->
         <SectionsHomeCategoryNewsSlider
           :items="firstCategoryList"
@@ -24,6 +24,7 @@
       v-else
       type="error"
       :message="error?.message || 'Unable to fetch data. Please try again later!'"
+      class="section-container"
     />
   </UiPagePortal>
 </template>
@@ -32,9 +33,9 @@
 const { categoriesList } = useAppConfig();
 const { data, status, error } = await useAsyncData("homepage", async () => {
   const [topHeadlines, newsFirstCategory, newsSecondCategory] = await Promise.all([
-    useFetcher(`/top-headlines?country=us&pageSize=40`),
-    useFetcher(`/top-headlines?country=us&category=${categoriesList[1]}&pageSize=10`),
-    useFetcher(`/top-headlines?country=us&category=${categoriesList[3]}&pageSize=9`),
+    useFetcher(`/api/news/top-headlines?country=us&pageSize=40`),
+    useFetcher(`/api/news/top-headlines?country=us&category=${categoriesList[1]}&pageSize=10`),
+    useFetcher(`/api/news/top-headlines?country=us&category=${categoriesList[3]}&pageSize=9`),
   ]);
 
   return {

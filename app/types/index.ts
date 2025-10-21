@@ -31,3 +31,19 @@ export interface LayoutGroupItem {
   type: LayoutGroupType
   subList: NewsItem[]
 }
+
+interface ErrorResponse {
+  message?: string
+}
+export interface FetcherResponse<T, E = ErrorResponse> {
+  data: Ref<T | null>
+  status: Ref<"idle" | "pending" | "success" | "error">
+  error: Ref<Error | E | null>
+}
+
+export interface ArticleDataResponse {
+    articles: NewsItem[]
+    status: string
+    totalResults: number
+    formattedTotalResults?: string
+}

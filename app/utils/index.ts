@@ -31,11 +31,25 @@ export const timeAgo = (input: Date | string | number): string => {
   return 'just now';
 };
 
-
 export const capFirstLetter = (word: string) => {
   if(!word || typeof word !== 'string' || word.length <=0){
     return "";
   }
   const [firstChar = "", ...rest] = word.split("");
   return firstChar?.toUpperCase() + rest?.join("")?.toLowerCase();
+}
+
+export const formatIndianNumber = (num: number | string): string => {
+  const str = num.toString();
+  const [integerPart = "", decimalPart] = str.split(".");
+  
+  const lastThree = integerPart.slice(-3);
+  const otherNumbers = integerPart.slice(0, -3);
+
+  const formatted =
+    otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") +
+    (otherNumbers ? "," : "") +
+    lastThree;
+
+  return decimalPart ? `${formatted}.${decimalPart}` : formatted;
 }
