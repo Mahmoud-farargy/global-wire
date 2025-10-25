@@ -5,6 +5,7 @@
     loading="lazy"
     :fallback="defaultImg"
     :draggable="false"
+    provider="none"
     @error="handleError"
   />
 </template>
