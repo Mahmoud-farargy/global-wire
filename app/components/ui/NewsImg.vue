@@ -19,7 +19,8 @@
     const currentSrc = ref<string>(props.src || '')
 
     const handleError = () => {
-      currentSrc.value = defaultImg
+      console.log("currentSrc >>", currentSrc.value);
+      // currentSrc.value = defaultImg
     }
 
     watch(() => props.src, (newValue: string) => {
