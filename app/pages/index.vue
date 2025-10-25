@@ -53,6 +53,15 @@ const { data, status, error, pending } = await useAsyncData("homepage", async ()
     newsFirstCategory: newsFirstCategory?.data?.value?.articles ?? [],
     newsSecondCategory: newsSecondCategory?.data?.value?.articles ?? [],
   };
+}, {
+  
+    server: true,
+    lazy: false,
+    default: () => ({}),
+    immediate: true,
+    transform: (res) => res,
+
+    watch: false,
 });
 
 const topNewsList = computed(() => data.value?.topHeadlines || []);

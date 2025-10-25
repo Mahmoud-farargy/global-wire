@@ -5,7 +5,6 @@ import {
   setResponseStatus,
   createError,
   getCookie,
-  setCookie,
 } from "h3"
 
 interface FetchNewsResponse {
