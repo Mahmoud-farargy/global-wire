@@ -5,7 +5,6 @@
     loading="lazy"
     :fallback="defaultImg"
     :draggable="false"
-    provider="none"
     @error="handleError"
   />
 </template>
@@ -21,7 +20,7 @@
 
     const handleError = () => {
       console.log("currentSrc >>", currentSrc.value);
-      // currentSrc.value = defaultImg
+      currentSrc.value = defaultImg
     }
 
     watch(() => props.src, (newValue: string) => {
