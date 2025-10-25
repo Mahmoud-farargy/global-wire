@@ -1,15 +1,21 @@
 export default defineAppConfig({
   appName: "Global Wire",
   categoriesList: [
-    "general",
-    "business",
-    "entertainment",
-    "health",
-    "science",
-    "sports",
-    "technology",
+    {value: "general", label: "General", icon: 'i-streamline-plump:news-paper' },
+    {value: "business",label: "Business", icon: 'i-material-symbols:business-center-outline'},
+    {value: "entertainment", label: "Entertainment", icon: 'i-streamline-pixel:entertainment-events-hobbies-popcorn'},
+    {value: "health", label: "Health", icon: 'i-ix:health'},
+    {value: "science", label: "Science", icon: 'i-pixel:science'},
+    {value: "sports", label: "Sports", icon: "i-material-symbols:sports-tennis"},
+    {value: "technology", label: "Technology", icon: "i-hugeicons:nano-technology"},
   ],
+  sortByOptions: {
+    Relevancy: "relevancy",
+    Popularity: "popularity",
+    "Published At": "publishedAt",
+  },
   countriesList: {
+    "United States": "us",
     "United Arab Emirates": "ae",
     Argentina: "ar",
     Austria: "at",
@@ -61,7 +67,6 @@ export default defineAppConfig({
     Turkey: "tr",
     Taiwan: "tw",
     Ukraine: "ua",
-    "United States": "us",
     Venezuela: "ve",
     "South Africa": "za",
   },
@@ -69,7 +74,7 @@ export default defineAppConfig({
     homepage: "/",
     sources: "/sources",
     search: "/search",
-    categories:"/categories"
+    categories: "/categories",
   },
-  portfolioLink: "https://mahmoudfarargy.vercel.app"
+  portfolioLink: "https://mahmoudfarargy.vercel.app",
 })

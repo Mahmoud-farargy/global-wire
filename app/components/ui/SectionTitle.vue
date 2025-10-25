@@ -2,7 +2,7 @@
   <div>
     <div class="separator-dotted mt-0" />
     <h2
-      :class="`text-size-0 font-bold text-center text-[#33302e] leading-[1.5rem] my-5 uppercase ${headerClass}`"
+      :class="`text-size-0 font-bold text-center text-[#33302e] leading-[1.5rem] mt-5 mb-7 uppercase ${headerClass}`"
     >
       {{ title }}
     </h2>

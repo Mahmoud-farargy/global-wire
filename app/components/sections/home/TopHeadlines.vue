@@ -29,7 +29,7 @@
             v-else-if="layoutSegment.type === 'grid3'"
             :items="layoutSegment.subList"
           />
-          
+
           <!-- Grid #4 & Grid #5 groups-->
           <SectionsHomeContentWithTeasers v-else :layout-segment="layoutSegment" />
         </template>

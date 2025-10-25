@@ -46,11 +46,9 @@
             <div
               class="flex flex-nowrap text-size--4 font-normal items-center w-full mt-auto mb-2 leading-[1.5rem]"
             >
-              <span
-                v-if="item.publishedAt"
-                class="relative sm:line-clamp-1 capitalize"
-                >{{ timeAgo(item.publishedAt) }}</span
-              >
+              <span v-if="item.publishedAt" class="relative sm:line-clamp-1 capitalize">{{
+                timeAgo(item.publishedAt)
+              }}</span>
             </div>
           </header>
         </article>
@@ -66,37 +64,37 @@ interface CategoryNewsSliderProps {
   items: NewsItem[];
 }
 const { items, categoryTitle } = defineProps<CategoryNewsSliderProps>();
-const sliderContainer = ref<HTMLElement | null>(null)
-const containerWidth = ref<number>(0)
-const { debounced: debouncedUpdate, cancel } = useDebounceFn(updateContainerWidth, 50)
+const sliderContainer = ref<HTMLElement | null>(null);
+const containerWidth = ref<number>(0);
+const { debounced: debouncedUpdate, cancel } = useDebounceFn(updateContainerWidth, 50);
 
-let resizeObserver: ResizeObserver | null = null
+let resizeObserver: ResizeObserver | null = null;
 
 // Dynamically decide number of items per view
 const itemsPerView = computed(() => {
-  if (containerWidth.value < 600) return 1
-  if (containerWidth.value < 900) return 2
-  return 3
-})
+  if (containerWidth.value < 600) return 1;
+  if (containerWidth.value < 900) return 2;
+  return 3;
+});
 
 function updateContainerWidth() {
   if (sliderContainer.value) {
-    containerWidth.value = sliderContainer.value.clientWidth
+    containerWidth.value = sliderContainer.value.clientWidth;
   }
 }
 
 onMounted(() => {
-  updateContainerWidth()
+  updateContainerWidth();
   if (sliderContainer.value) {
-    resizeObserver = new ResizeObserver(debouncedUpdate)
-    resizeObserver.observe(sliderContainer.value)
+    resizeObserver = new ResizeObserver(debouncedUpdate);
+    resizeObserver.observe(sliderContainer.value);
   }
-})
+});
 
 onBeforeUnmount(() => {
   if (resizeObserver && sliderContainer.value) {
     cancel();
-    resizeObserver.unobserve(sliderContainer.value)
+    resizeObserver.unobserve(sliderContainer.value);
   }
-})
+});
 </script>

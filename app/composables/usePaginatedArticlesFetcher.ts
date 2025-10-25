@@ -9,6 +9,7 @@ interface ApiResponse<T> {
 interface FetchOptions {
   endpoint: string
   page?: number
+  query: Record<string, unknown>
   isLoadMore?: boolean
   storedData?: NewsItem[]
 }
@@ -39,16 +40,18 @@ export function usePaginatedArticlesFetcher<T extends BaseResponse>() {
 
   const fetchData = async ({
     endpoint,
-    page = 1,
     isLoadMore = false,
     storedData = [],
+    query = {
+      page: 1,
+    },
   }: FetchOptions): Promise<void> => {
     isInitiallyLoading.value = true
     isFetchingMore.value = isLoadMore
 
     try {
       const { data, status, error } = (await useFetcher(endpoint, {
-        query: { page },
+        query,
       })) as FetcherResponse<T>
 
       const responseValue: T =

@@ -9,7 +9,7 @@
     <div
       v-if="message"
       :class="[
-        'flex items-start gap-3 px-4 py-3 rounded-2xl shadow-lg border backdrop-blur-sm select-none mx-2 md:mx-5 mb-4 mt-10',
+        'flex items-start gap-3 px-4 py-3 rounded-2xl shadow-lg border backdrop-blur-sm select-none mb-4 mt-10 max-w-[37rem] mx-auto',
         typeClasses,
       ]"
     >
@@ -25,7 +25,7 @@
 
       <!-- Text -->
       <div class="flex flex-col">
-        <p class="font-semibold capitalize" :class="textColor">{{ title }}</p>
+        <p class="font-semibold capitalize mb-2" :class="textColor">{{ title }}</p>
         <p class="text-sm leading-snug opacity-90 text-white/90">
           {{ message }}
         </p>

@@ -24,5 +24,7 @@
 
     watch(() => props.src, (newValue: string) => {
       currentSrc.value = newValue;
+    }, {
+      flush: 'post'
     })
 </script>

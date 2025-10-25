@@ -1,7 +1,9 @@
 <template>
   <section v-if="layoutSegment">
     <!-- Section Title -->
-    <UiSectionTitle :title="layoutSegment.type === 'grid4' ? 'Top Stories' : 'Highlights'" />
+    <UiSectionTitle
+      :title="layoutSegment.type === 'grid4' ? 'Top Stories' : 'Highlights'"
+    />
 
     <!-- Section Content -->
     <div class="lg:grid lg:grid-cols-12 relative gap-x-5">
@@ -19,9 +21,14 @@
         />
       </div>
       <!-- Teaser -->
-      <aside v-if="stickyItemData" class="hidden lg:block col-span-3 relative border-l-[1px] border-divider">
+      <aside
+        v-if="stickyItemData"
+        class="hidden lg:block col-span-3 relative border-l-[1px] border-divider"
+      >
         <!-- Sticky Item -->
-        <article class="sticky top-[1rem] ml-3 border-t-[0.25rem] border-t-palette-teal px-6 py-8 bg-palette-paper-2 overflow-hidden sticky-item-shadow">
+        <article
+          class="sticky top-[1rem] ml-3 border-t-[0.25rem] border-t-palette-teal px-6 py-8 bg-palette-paper-2 overflow-hidden sticky-item-shadow"
+        >
           <!-- Image Container -->
           <a
             :href="stickyItemData.url"
@@ -59,9 +66,9 @@
 </template>
 
 <script lang="ts" setup>
-import type { NewsItem, LayoutGroupItem } from '@/types';
+import type { NewsItem, LayoutGroupItem } from "@/types";
 interface ContentWithSidebarProps {
-  layoutSegment: LayoutGroupItem,
+  layoutSegment: LayoutGroupItem;
 }
 const { layoutSegment } = defineProps<ContentWithSidebarProps>();
 

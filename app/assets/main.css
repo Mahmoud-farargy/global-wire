@@ -2,11 +2,14 @@
 @import "tw-animate-css";
 @import "@nuxt/ui";
 
+@custom-variant dark (&:not(*));
+
 @theme {
   --ui-bg: #fff1e5;
   --ui-primary: #990f3d;
+  --ui-secondary:#33302e;
   --color-bg: #f0f0f0;
-  /* Container (utilities generated using --container-* tokens) */
+  /* Container */
   --container-center: 1;
   --container-padding: 2rem;
   /* Colors */
@@ -17,18 +20,10 @@
   --color-palette-paper-3: #f2dfce;
   --color-palette-paper-4: #33302e;
   --color-palette-teal: #0d7680;
+  --color-palette-teal2: #0a5e66;
   --color-palette-dark-1: #000;
   --color-palette-dark-2: #262a33;
-  /* Screens */
-  /* --breakpoint-xs: 495px;
-  --breakpoint-xxs: 320px;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-  --breakpoint-2xl: 1536px;
-  --breakpoint-3xl: 1920px;
-  --breakpoint-4xl: 2560px; */
+ 
 }
 
 :root {
@@ -196,31 +191,6 @@ body {
   line-height: var(--lh-6);
 }
 
-/* @layer utilities {
-  [class*="text-size--"] { font-family: inherit; }
-  .text-size--3 { font-size: var(--step--3); line-height: var(--lh--3); }
-  .text-size--2 { font-size: var(--step--2); line-height: var(--lh--2);}
-  .text-size--1 { font-size: var(--step--1); line-height: var(--lh--1);}
-  .text-size-0 { font-size: var(--step-0); line-height: var(--lh-0);} 
-  .text-size-1 { font-size: var(--step-1); line-height: var(--lh-1);}
-  .text-size-2 { font-size: var(--step-2); line-height: var(--lh-2);}
-  .text-size-3 { font-size: var(--step-3); line-height: var(--lh-3);}
-  .text-size-4 { font-size: var(--step-4); line-height: var(--lh-4);}
-  .text-size-5 { font-size: var(--step-5); line-height: var(--lh-5);}
-  .text-size-6 { font-size: var(--step-6); line-height: var(--lh-6);} 
-} */
-/* @utility container-sm {
-  width: 100%;
-  max-width: 87rem;
-} */
-
-/* @utility container-3xl {
-  max-width: 90rem;
-}
-@utility container-4xl {
-  max-width: 95rem;
-} */
-
 @layer utilities {
   .section-container {
     @apply container mx-auto px-2 sm:px-0;
@@ -257,8 +227,35 @@ body {
   }
 }
 
+
+
+#header ul li:hover a:after {
+  background-color: var(--color-palette-paper-4);
+}
+#header ul li:hover a {
+  color: var( --color-palette-paper-4);
+}
+
+#header ul li a.router-link-exact-active{
+  color: var( --color-palette-teal2);
+}
+
+#header ul li a.router-link-exact-active::after{
+  background-color: var( --color-palette-teal2);
+}
+
+#header ul li a::after{
+  content: "";
+  position: absolute;
+  height: 4px;
+  bottom: 0;
+  width: 100%;
+  left:0;
+}
+
+
 /* ANIMATIONS */
-.news-article-list-move, /* apply transition to moving elements */
+.news-article-list-move,
 .news-article-list-enter-active,
 .news-article-list-leave-active {
   transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -270,7 +267,3 @@ body {
   -webkit-transform: scale3d(0.9, 0.9, 0.9);
   transform: scale3d(0.9, 0.9, 0.9);
 }
-
-/* @utility container {
-  @apply 3xl:container-3xl 4xl:container-4xl;
-} */

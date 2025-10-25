@@ -1,4 +1,12 @@
-import { defineEventHandler, getQuery, readBody, setResponseStatus, createError } from 'h3'
+import {
+  defineEventHandler,
+  getQuery,
+  readBody,
+  setResponseStatus,
+  createError,
+  getCookie,
+  setCookie,
+} from "h3"
 
 interface FetchNewsResponse {
   [key: string]: unknown
@@ -9,28 +17,44 @@ interface FetchError extends Error {
     statusText?: string
   }
 }
-export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
-  const { newsApiKey, public: { baseNewsApiUrl } } = config|| {};
 
-  const query = getQuery(event) as Record<string, string>
-  const method = event.method || 'GET'
-  const body = method !== 'GET' ? await readBody(event) : undefined 
+export default defineEventHandler(async (event) => {
+  const countrySavedCookie = getCookie(event, "global-wire-country")
+  const config = useRuntimeConfig()
+  const {
+    newsApiKey,
+    public: { baseNewsApiUrl },
+  } = config || {}
+  const { country: countryQuery, ...restQueries } = getQuery(event) as Record<
+    string,
+    string
+  >
+  const currentCountry = countryQuery || countrySavedCookie || "us"
+  const method = event.method || "GET"
+  const body = method !== "GET" ? await readBody(event) : undefined
 
   if (!newsApiKey) throw new Error("News API key is not set")
+
   try {
-    const response = await $fetch<FetchNewsResponse>(event.context.params!.path,{
-      baseURL: baseNewsApiUrl,
-      method,
-      body,
-      query: {
-        apiKey: newsApiKey,
-        ...query,
+    const response = await $fetch<FetchNewsResponse>(
+      event.context.params!.path,
+      {
+        baseURL: baseNewsApiUrl,
+        method,
+        body,
+        query: {
+          apiKey: newsApiKey,
+          ...(currentCountry !== "all" && {
+            country: currentCountry,
+          }),
+          ...restQueries,
+        },
       }
-    })
+    )
+
     return response
   } catch (err) {
-     const e = err as FetchError
+    const e = err as FetchError
     const status = e?.response?.status ?? 500
     const errorMsg = e?.response?.statusText || "Unknown error"
     const sanitizedErrMsg = String(errorMsg)?.replace(newsApiKey, "***")

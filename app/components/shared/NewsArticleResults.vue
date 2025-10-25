@@ -1,7 +1,11 @@
 <template>
   <section>
     <!-- Title -->
-    <h1 class="text-size-1 font-light text-heading mb-2.5">{{ title }}</h1>
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+      <h1 class="text-size-1 font-light text-heading mb-2.5">{{ title }}</h1>
+      <slot name="side-tools" />
+    </div>
+
     <!-- List Items -->
     <ListsNewsStackedVertically :items="items" :class="[isLoading ? 'opacity-55' : '']" />
     <!-- Loading Indicator -->

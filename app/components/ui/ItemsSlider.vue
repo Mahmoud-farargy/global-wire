@@ -36,7 +36,9 @@
       :disabled="!loop && atStart"
       :class="[
         'absolute hidden lg:inline-block opacity-0 left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow hover:bg-white focus:outline-none focus-visible:ring transition-opacity duration-300',
-        !loop && atStart ? 'group-hover:opacity-50 cursor-not-allowed' : 'group-hover:opacity-100'
+        !loop && atStart
+          ? 'group-hover:opacity-50 cursor-not-allowed'
+          : 'group-hover:opacity-100',
       ]"
       aria-label="Previous slide"
       type="button"
@@ -62,7 +64,9 @@
       :disabled="!loop && atEnd"
       :class="[
         'absolute hidden lg:inline-block opacity-0 right-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/90 shadow hover:bg-white focus:outline-none focus-visible:ring transition-opacity duration-300',
-        !loop && atEnd ? 'group-hover:opacity-50 cursor-not-allowed' : 'group-hover:opacity-100'
+        !loop && atEnd
+          ? 'group-hover:opacity-50 cursor-not-allowed'
+          : 'group-hover:opacity-100',
       ]"
       aria-label="Next slide"
       type="button"
@@ -127,7 +131,9 @@ const internalIndex = ref(0);
 
 const itemsCount = computed(() => props.items.length);
 const maxIndex = computed(() => Math.max(0, itemsCount.value - props.itemsPerView));
-const dotsCount = computed(() => Math.max(1, Math.ceil(itemsCount.value / props.itemsPerView)));
+const dotsCount = computed(() =>
+  Math.max(1, Math.ceil(itemsCount.value / props.itemsPerView))
+);
 
 const atStart = computed(() => !props.loop && internalIndex.value <= 0);
 const atEnd = computed(() => !props.loop && internalIndex.value >= maxIndex.value);
@@ -137,7 +143,10 @@ const currentIndex = computed(() => internalIndex.value);
 watch(currentIndex, (v) => emit("update:index", v));
 
 function itemKey(item: Item, i: number) {
-  return props.itemKeyField && item && typeof item === "object" && props.itemKeyField in item
+  return props.itemKeyField &&
+    item &&
+    typeof item === "object" &&
+    props.itemKeyField in item
     ? item[props.itemKeyField]
     : i;
 }

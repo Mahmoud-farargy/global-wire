@@ -95,6 +95,9 @@ const { items } = defineProps<SimpleGridProps>();
 
 @media screen and (min-width: 1024px) {
   #SimpleGrid > li {
+    padding: 0 12px 24px 12px;
+  }
+  #SimpleGrid > li:nth-child(n+4) {
     padding: 24px 12px;
   }
 

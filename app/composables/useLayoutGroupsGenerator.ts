@@ -36,7 +36,7 @@ export const useLayoutGroupsGenerator = (list: NewsItem[]) => {
     const maxCount = lastIndex + maxItemsCount
     if (list.length >= maxCount || isNaN(maxItemsCount)) {
       const subList = list.slice(lastIndex, maxCount || undefined)
-      if(subList?.length <= 0) break;
+      if (subList?.length <= 0) break
       newList.push(createList(type, subList))
       lastIndex = maxCount
     }

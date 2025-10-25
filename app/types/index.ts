@@ -42,8 +42,15 @@ export interface FetcherResponse<T, E = ErrorResponse> {
 }
 
 export interface ArticleDataResponse {
-    articles: NewsItem[]
-    status: string
-    totalResults: number
-    formattedTotalResults?: string
+  articles: NewsItem[]
+  status: string
+  totalResults: number
+  formattedTotalResults?: string
+}
+
+export interface CategoriesItem {
+  value: string
+  icon: string
+  label: string
+  route: string
 }

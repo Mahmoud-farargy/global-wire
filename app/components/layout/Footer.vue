@@ -4,16 +4,19 @@
     <div class="text-center py-3.5 mt-5">
       <a :href="portfolioLink" target="_blank" rel="noopener">
         <span class="text-size--4 font-light text-white">
-          Mahmoud Elfarargy
+          Made with
+          <span aria-label="heart">
+            ❤️
+            <span class="sr-only">Love</span>
+          </span>
+          by Mahmoud Elfarargy {{ currentYear }} &copy;
         </span>
       </a>
     </div>
-
-    <!-- Sub Footer -->
-    <!-- <div class="bg-palette-dark-1 p-1.5" /> -->
   </footer>
 </template>
 
 <script setup>
 const { portfolioLink } = useAppConfig();
+const currentYear = computed(() => new Date().getFullYear());
 </script>
