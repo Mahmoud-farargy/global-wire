@@ -34,7 +34,8 @@ export default defineNuxtConfig({
       baseNewsApiUrl: import.meta.env.VITE_BASE_NEWSAPI_URL,
     }
   },
-    image: {
+  image: {
+    provider: "ipx",
     domains: [],
     presets: {},
   },

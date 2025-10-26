@@ -1,13 +1,21 @@
 <template>
   <NuxtImg
+    v-if="!imageFailed"
     v-bind="props"
     :src="currentSrc"
     loading="lazy"
-    :provider="provider"
     :fallback="defaultImg"
     :draggable="false"
     @error="handleError"
   />
+  <img 
+    v-else
+    v-bind="props"
+    :src="currentSrc"
+    loading="lazy"
+    :fallback="defaultImg"
+    :draggable="false"
+  >
 </template>
 
 <script lang="ts" setup>
@@ -18,15 +26,15 @@
     }
     const props = defineProps<NewsImgProps>();
     const currentSrc = ref<string>(props.src || '')
-    const provider = ref<string | undefined>("ipx");
+    const imageFailed = ref<boolean>(false);
 
     const handleError = () => {
-      provider.value = undefined;
+      imageFailed.value = true;
       currentSrc.value = defaultImg
     }
 
     watch(() => props.src, (newValue: string) => {
-      provider.value = "ipx";
+      imageFailed.value = false;
       currentSrc.value = newValue;
     }, {
       flush: 'post'
