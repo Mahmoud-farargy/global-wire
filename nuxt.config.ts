@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     newsApiKey: import.meta.env.VITE_NEWS_API_KEY,
     public: {
       baseNewsApiUrl: import.meta.env.VITE_BASE_NEWSAPI_URL,
-    }
+    },
   // },
   //   image: {
   //   provider: 'ipx',
