@@ -14,7 +14,7 @@
                 i !== 0 ? 'md:!text-size--2 line-clamp-3' : 'md:!text-size-2 line-clamp-4'
               } text-size-2 tracking-[-.5px] break-words !font-black`"
             >
-              {{ item.title }}
+              {{ removeArticleAuthor(item.title) }}
             </h3>
           </a>
           <!-- content/description -->

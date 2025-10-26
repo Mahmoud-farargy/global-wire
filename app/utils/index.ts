@@ -61,3 +61,7 @@ export const getRandomItems = <T>(list: T[], maxItemsCount: number): T[] => {
   const shuffled = [...list].sort(() => Math.random() - 0.5)
   return shuffled.slice(0, maxItemsCount)
 }
+
+export const removeArticleAuthor = (articleTitle: string) => {
+  return articleTitle?.replace(/\s-\s.*$/, () => "");
+}

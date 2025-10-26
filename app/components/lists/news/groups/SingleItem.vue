@@ -33,7 +33,7 @@
           <h3
             class="text-size-2 md:!text-size-3 tracking-[-.5px] break-words !font-black line-clamp-6"
           >
-            {{ item.title }}
+            {{ removeArticleAuthor(item.title) }}
           </h3>
         </a>
       </header>
