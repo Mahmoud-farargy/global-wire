@@ -18,7 +18,7 @@
     }
     const props = defineProps<NewsImgProps>();
     const currentSrc = ref<string>(props.src || '')
-    const provider = ref<string | undefined>("none");
+    const provider = ref<string | undefined>("ipx");
 
     const handleError = () => {
       provider.value = undefined;
@@ -26,7 +26,7 @@
     }
 
     watch(() => props.src, (newValue: string) => {
-      provider.value = "none";
+      provider.value = "ipx";
       currentSrc.value = newValue;
     }, {
       flush: 'post'
