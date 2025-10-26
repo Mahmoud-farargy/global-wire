@@ -3,7 +3,7 @@
     v-bind="props"
     :src="currentSrc"
     loading="lazy"
-    :provider="isExternal(currentSrc) ? undefined : 'none'"
+    :provider="provider"
     :fallback="defaultImg"
     :draggable="false"
     @error="handleError"
@@ -18,14 +18,15 @@
     }
     const props = defineProps<NewsImgProps>();
     const currentSrc = ref<string>(props.src || '')
-
-    const isExternal = (url: string) => /^https?:\/\//.test(url);
+    const provider = ref<string | undefined>("none");
 
     const handleError = () => {
+      provider.value = undefined;
       currentSrc.value = defaultImg
     }
 
     watch(() => props.src, (newValue: string) => {
+      provider.value = "none";
       currentSrc.value = newValue;
     }, {
       flush: 'post'
