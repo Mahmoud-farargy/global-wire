@@ -78,7 +78,8 @@ export default defineAppConfig({
   }, 
   endpointBases: {
     HEADLINES: "/api/news/top-headlines",
-    SOURCES: "/api/news/top-headlines/sources"
+    SOURCES: "/api/news/top-headlines/sources",
+    EVERYTHING: "/api/news/everything",
   },
   portfolioLink: "https://mahmoudfarargy.vercel.app",
 })

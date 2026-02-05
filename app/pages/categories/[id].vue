@@ -27,6 +27,7 @@
 <script lang="ts" setup>
 import type { ArticleDataResponse } from "@/types";
 const router = useRoute();
+const { endpointBases: { HEADLINES } } = useAppConfig();
 const currentPage = ref<number>(1);
 const { id } = router.params || {};
 const {
@@ -45,7 +46,7 @@ const fetchNewsData = async (
   isLoadMore?: boolean
 ) => {
   await fetchData({
-    endpoint: `/api/news/top-headlines`,
+    endpoint: HEADLINES,
     isLoadMore,
     storedData: apiResponse.value.data?.articles ?? [],
     query: {

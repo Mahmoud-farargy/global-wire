@@ -32,6 +32,7 @@ const currentPage = ref<number>(1);
 
 // Composables
 const router = useRoute();
+const { endpointBases: { EVERYTHING } } = useAppConfig();
 const {
   apiResponse,
   isInitiallyLoading,
@@ -47,7 +48,7 @@ const fetchNewsData = async (
   isLoadMore?: boolean
 ) => {
   await fetchData({
-    endpoint: `/api/news/everything`,
+    endpoint: EVERYTHING,
     isLoadMore,
     storedData: apiResponse.value.data?.articles ?? [],
     query: {

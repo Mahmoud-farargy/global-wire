@@ -109,7 +109,7 @@ const {
   isFetchingMore,
   fetchData,
 } = usePaginatedArticlesFetcher<ArticleDataResponse>();
-const { sortByOptions } = useAppConfig();
+const { sortByOptions, endpointBases: { EVERYTHING } } = useAppConfig();
 
 // Refs
 const isDatePopoverOpen = ref<boolean>(false);
@@ -161,7 +161,7 @@ const fetchNewsData = async ({
   const formattedEnd = formatForNewsApi(end);
 
   await fetchData({
-    endpoint: `/api/news/everything`,
+    endpoint: EVERYTHING,
     isLoadMore,
     storedData: newsData.value,
     query: {
