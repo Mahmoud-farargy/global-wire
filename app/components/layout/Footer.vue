@@ -9,7 +9,7 @@
             ❤️
             <span class="sr-only">Love</span>
           </span>
-          by Mahmoud Elfarargy {{ currentYear }} &copy;
+          by Mahmoud Elfarargy 2025 &copy;
         </span>
       </a>
     </div>
@@ -18,5 +18,5 @@
 
 <script setup>
 const { portfolioLink } = useAppConfig();
-const currentYear = computed(() => new Date().getFullYear());
+
 </script>
