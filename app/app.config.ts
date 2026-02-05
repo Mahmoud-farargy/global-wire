@@ -75,6 +75,10 @@ export default defineAppConfig({
     sources: "/sources",
     search: "/search",
     categories: "/categories",
+  }, 
+  endpointBases: {
+    HEADLINES: "/api/news/top-headlines",
+    SOURCES: "/api/news/top-headlines/sources"
   },
   portfolioLink: "https://mahmoudfarargy.vercel.app",
 })

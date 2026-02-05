@@ -36,16 +36,16 @@
 </template>
 
 <script setup>
-const { categoriesList } = useAppConfig();
+const { categoriesList, endpointBases: { HEADLINES } } = useAppConfig();
 const randomizedCategoryItems = computed(() =>
   getRandomItems(categoriesList.slice(1), 2)
 );
 const { data, status, error, pending } = await useAsyncData("homepage", async () => {
   const [firstCategoryItem, secondCategoryItem] = randomizedCategoryItems.value;
   const [topHeadlines, newsFirstCategory, newsSecondCategory] = await Promise.all([
-    useFetcher(`/api/news/top-headlines?country=us&pageSize=40`),
-    useFetcher(`/api/news/top-headlines?country=us&category=${firstCategoryItem?.value}&pageSize=10`),
-    useFetcher(`/api/news/top-headlines?country=us&category=${secondCategoryItem?.value}&pageSize=9`),
+    useFetcher(`${HEADLINES}?country=us&pageSize=40`),
+    useFetcher(`${HEADLINES}?country=us&category=${firstCategoryItem?.value}&pageSize=10`),
+    useFetcher(`${HEADLINES}?country=us&category=${secondCategoryItem?.value}&pageSize=9`),
   ]);
 
   return {

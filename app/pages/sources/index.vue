@@ -18,6 +18,7 @@
 </template>
 
 <script setup>
-const { data, status, error } = await useFetcher("/api/news/top-headlines/sources");
+const { endpointBases: { SOURCES } } = useAppConfig();
+const { data, status, error } = await useFetcher(SOURCES);
 const sourcesData = computed(() => data.value?.sources || []);
 </script>
